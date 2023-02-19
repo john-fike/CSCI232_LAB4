@@ -28,7 +28,6 @@ public class Test {
         bst.insert(68);
         bst.insert(80);
 
-
         bst.writeToFile();
         bst.loadFromFile();
         bst.writeToFile();

@@ -10,7 +10,6 @@ import java.util.Scanner;
  * @author yaw
  */
 public class BST {
-
     Node root;
     ArrayList<Node> inorderNodes = new ArrayList<>();
     public BST(){

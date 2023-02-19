@@ -11,7 +11,7 @@ import java.util.Scanner;
  */
 public class BST {
     Node root;
-    ArrayList<Node> inorderNodes = new ArrayList<>();
+    int inOrderCount=0;
     public BST(){
         root = null;
     }
@@ -83,18 +83,15 @@ public class BST {
     public void reNumber(Node node){
         if(node!=null){
             reNumber(node.getLeft());
-            inorderNodes.add(node);
-            System.out.println("Adding " + node.getValue());
+            node.setValue(inOrderCount);
+            System.out.println("Set val to: " + inOrderCount);
+            inOrderCount++;
             reNumber(node.getRight());
-        }else{
-            for(int i=0; i<inorderNodes.size()-1; i++){
-                inorderNodes.get(i).setValue(i);
-                System.out.print(inorderNodes.get(i).getValue() + " ");
-            }
         }
-
     }
     public void reNumber() {
+        inOrderCount = 0;
         reNumber(root);
     }
+
 }

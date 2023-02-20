@@ -11,9 +11,7 @@ import java.util.Scanner;
 public class BST {
     Node root;
     int inOrderCount=0;
-    public BST(){
-        root = null;
-    }
+    public BST(){root = null;}
     public void insert(int newValue) {
         if (root == null) {
             root = new Node(newValue);
@@ -58,7 +56,6 @@ public class BST {
                     Node node = queue.remove();
                     System.out.println("Writing " + node.getValue() + " to file...");
                     outFile.print(node.getValue() + ",");
-                    System.out.println("Successfully wrote to the file.");
                     if(node.getLeft()!=null){queue.add(node.getLeft());}
                     if(node.getRight()!=null){queue.add(node.getRight());}
                 }
@@ -81,8 +78,13 @@ public class BST {
             System.out.println("Loading: " + tree);
             String[] tokens = tree.split(",");
             for (String s : tokens){
-                System.out.println("Inserting: " + Integer.parseInt(s));
-                insert(Integer.parseInt(s));
+                try{
+                    System.out.println("Inserting: " + Integer.parseInt(s));
+                    insert(Integer.parseInt(s));
+                }catch(Exception e){
+                    System.out.println("File incorrectly formatted");
+                }
+
             }
             inFile.close();
         } catch (FileNotFoundException e) {
